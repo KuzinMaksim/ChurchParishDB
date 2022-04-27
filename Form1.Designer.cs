@@ -376,17 +376,8 @@ namespace ChurchParish
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource parishionerBindingSource1;
         private System.Windows.Forms.CheckBox readOnlyCB;
         private System.Windows.Forms.TextBox indexTB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private CrurchParish.ChurchParishV2DataSet1 churchParishV2DataSet1;
         private System.Windows.Forms.BindingSource parishionerBindingSource;
         private CrurchParish.ChurchParishV2DataSet1TableAdapters.ParishionerTableAdapter parishionerTableAdapter;
