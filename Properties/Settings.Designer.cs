@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CrurchParish.Properties {
+namespace ChurchParish.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

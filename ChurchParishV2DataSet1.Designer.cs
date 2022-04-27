@@ -37,6 +37,7 @@ namespace CrurchParish {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -48,6 +49,9 @@ namespace CrurchParish {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -68,6 +72,7 @@ namespace CrurchParish {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -129,6 +134,7 @@ namespace CrurchParish {
         public override global::System.Data.DataSet Clone() {
             ChurchParishV2DataSet1 cln = ((ChurchParishV2DataSet1)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -204,7 +210,7 @@ namespace CrurchParish {
             this.Namespace = "http://tempuri.org/ChurchParishV2DataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableParishioner = new ParishionerDataTable();
+            this.tableParishioner = new ParishionerDataTable(false);
             base.Tables.Add(this.tableParishioner);
         }
         
@@ -269,6 +275,12 @@ namespace CrurchParish {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitExpressions() {
+            this.Parishioner.TestColumnColumn.Expression = "iif(avg(id)>id or len(middlename)>10,firstname+lastname,lastname+firstname)";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ParishionerRowChangeEventHandler(object sender, ParishionerRowChangeEvent e);
         
@@ -293,12 +305,23 @@ namespace CrurchParish {
             
             private global::System.Data.DataColumn columnSex;
             
+            private global::System.Data.DataColumn columnTestColumn;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ParishionerDataTable() {
+            public ParishionerDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ParishionerDataTable(bool initExpressions) {
                 this.TableName = "Parishioner";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -384,6 +407,14 @@ namespace CrurchParish {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TestColumnColumn {
+                get {
+                    return this.columnTestColumn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,6 +450,24 @@ namespace CrurchParish {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ParishionerRow AddParishionerRow(string FirstName, string MiddleName, string LastName, string Adress, System.DateTime BirthDate, bool Sex, string TestColumn) {
+                ParishionerRow rowParishionerRow = ((ParishionerRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        FirstName,
+                        MiddleName,
+                        LastName,
+                        Adress,
+                        BirthDate,
+                        Sex,
+                        TestColumn};
+                rowParishionerRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowParishionerRow);
+                return rowParishionerRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ParishionerRow AddParishionerRow(string FirstName, string MiddleName, string LastName, string Adress, System.DateTime BirthDate, bool Sex) {
                 ParishionerRow rowParishionerRow = ((ParishionerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -428,7 +477,8 @@ namespace CrurchParish {
                         LastName,
                         Adress,
                         BirthDate,
-                        Sex};
+                        Sex,
+                        null};
                 rowParishionerRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowParishionerRow);
                 return rowParishionerRow;
@@ -465,6 +515,7 @@ namespace CrurchParish {
                 this.columnAdress = base.Columns["Adress"];
                 this.columnBirthDate = base.Columns["BirthDate"];
                 this.columnSex = base.Columns["Sex"];
+                this.columnTestColumn = base.Columns["TestColumn"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -484,6 +535,8 @@ namespace CrurchParish {
                 base.Columns.Add(this.columnBirthDate);
                 this.columnSex = new global::System.Data.DataColumn("Sex", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSex);
+                this.columnTestColumn = new global::System.Data.DataColumn("TestColumn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestColumn);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -496,6 +549,7 @@ namespace CrurchParish {
                 this.columnMiddleName.MaxLength = 50;
                 this.columnLastName.MaxLength = 50;
                 this.columnAdress.MaxLength = 50;
+                this.columnTestColumn.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -514,6 +568,12 @@ namespace CrurchParish {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(ParishionerRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitExpressions() {
+                this.TestColumnColumn.Expression = "iif(avg(id)>id or len(middlename)>10,firstname+lastname,lastname+firstname)";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -745,6 +805,22 @@ namespace CrurchParish {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TestColumn {
+                get {
+                    try {
+                        return ((string)(this[this.tableParishioner.TestColumnColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'TestColumn\' в таблице \'Parishioner\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableParishioner.TestColumnColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsFirstNameNull() {
                 return this.IsNull(this.tableParishioner.FirstNameColumn);
             }
@@ -813,6 +889,18 @@ namespace CrurchParish {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSexNull() {
                 this[this.tableParishioner.SexColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTestColumnNull() {
+                return this.IsNull(this.tableParishioner.TestColumnColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTestColumnNull() {
+                this[this.tableParishioner.TestColumnColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1042,7 +1130,7 @@ SELECT Id, FirstName, MiddleName, LastName, Adress, BirthDate, Sex FROM Parishio
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CrurchParish.Properties.Settings.Default.ChurchParishV2ConnectionString;
+            this._connection.ConnectionString = global::ChurchParish.Properties.Settings.Default.ChurchParishV2ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1075,7 +1163,7 @@ SELECT Id, FirstName, MiddleName, LastName, Adress, BirthDate, Sex FROM Parishio
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ChurchParishV2DataSet1.ParishionerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ChurchParishV2DataSet1.ParishionerDataTable dataTable = new ChurchParishV2DataSet1.ParishionerDataTable();
+            ChurchParishV2DataSet1.ParishionerDataTable dataTable = new ChurchParishV2DataSet1.ParishionerDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

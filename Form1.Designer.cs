@@ -1,5 +1,5 @@
 ﻿
-namespace CrurchParish
+namespace ChurchParish
 {
     partial class Form1
     {
@@ -31,9 +31,12 @@ namespace CrurchParish
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label birthDateLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Label firstNameLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.readOnlyCB = new System.Windows.Forms.CheckBox();
+            this.indexTB = new System.Windows.Forms.TextBox();
             this.churchParishV2DataSet1 = new CrurchParish.ChurchParishV2DataSet1();
             this.parishionerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.parishionerTableAdapter = new CrurchParish.ChurchParishV2DataSet1TableAdapters.ParishionerTableAdapter();
@@ -52,16 +55,15 @@ namespace CrurchParish
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.parishionerBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.parishionerDataGridView = new System.Windows.Forms.DataGridView();
-            this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.sortButton = new System.Windows.Forms.ToolStripButton();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sortTextBox = new System.Windows.Forms.ToolStripTextBox();
             birthDateLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.churchParishV2DataSet1)).BeginInit();
@@ -79,6 +81,48 @@ namespace CrurchParish
             birthDateLabel.Size = new System.Drawing.Size(57, 13);
             birthDateLabel.TabIndex = 3;
             birthDateLabel.Text = "Birth Date:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new System.Drawing.Point(9, 289);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            firstNameLabel.TabIndex = 4;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // birthDateDateTimePicker
+            // 
+            this.birthDateDateTimePicker.Location = new System.Drawing.Point(75, 260);
+            this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
+            this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.birthDateDateTimePicker.TabIndex = 4;
+            // 
+            // firstNameTextBox
+            // 
+            this.firstNameTextBox.Location = new System.Drawing.Point(75, 286);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.firstNameTextBox.TabIndex = 5;
+            // 
+            // readOnlyCB
+            // 
+            this.readOnlyCB.AutoSize = true;
+            this.readOnlyCB.Location = new System.Drawing.Point(12, 318);
+            this.readOnlyCB.Name = "readOnlyCB";
+            this.readOnlyCB.Size = new System.Drawing.Size(73, 17);
+            this.readOnlyCB.TabIndex = 6;
+            this.readOnlyCB.Text = "ReadOnly";
+            this.readOnlyCB.UseVisualStyleBackColor = true;
+            this.readOnlyCB.CheckedChanged += new System.EventHandler(this.readOnlyCB_CheckedChanged);
+            // 
+            // indexTB
+            // 
+            this.indexTB.Location = new System.Drawing.Point(12, 342);
+            this.indexTB.Name = "indexTB";
+            this.indexTB.Size = new System.Drawing.Size(100, 20);
+            this.indexTB.TabIndex = 7;
+            this.indexTB.Leave += new System.EventHandler(this.indexTB_Leave);
             // 
             // churchParishV2DataSet1
             // 
@@ -119,7 +163,7 @@ namespace CrurchParish
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.parishionerBindingNavigatorSaveItem,
-            this.sortButton});
+            this.sortTextBox});
             this.parishionerBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.parishionerBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.parishionerBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -127,8 +171,8 @@ namespace CrurchParish
             this.parishionerBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.parishionerBindingNavigator.Name = "parishionerBindingNavigator";
             this.parishionerBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.parishionerBindingNavigator.Size = new System.Drawing.Size(800, 25);
-            this.parishionerBindingNavigator.TabIndex = 0;
+            this.parishionerBindingNavigator.Size = new System.Drawing.Size(889, 25);
+            this.parishionerBindingNavigator.TabIndex = 8;
             this.parishionerBindingNavigator.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem
@@ -224,126 +268,96 @@ namespace CrurchParish
             this.parishionerBindingNavigatorSaveItem.Name = "parishionerBindingNavigatorSaveItem";
             this.parishionerBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.parishionerBindingNavigatorSaveItem.Text = "Сохранить данные";
-            this.parishionerBindingNavigatorSaveItem.Click += new System.EventHandler(this.parishionerBindingNavigatorSaveItem_Click);
+            this.parishionerBindingNavigatorSaveItem.Click += new System.EventHandler(this.parishionerBindingNavigatorSaveItem_Click_1);
             // 
             // parishionerDataGridView
             // 
             this.parishionerDataGridView.AutoGenerateColumns = false;
-            this.parishionerDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.parishionerDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.parishionerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.parishionerDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewCheckBoxColumn1});
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewCheckBoxColumn2,
+            this.dataGridViewTextBoxColumn14});
             this.parishionerDataGridView.DataSource = this.parishionerBindingSource;
-            this.parishionerDataGridView.Location = new System.Drawing.Point(0, 28);
+            this.parishionerDataGridView.Location = new System.Drawing.Point(0, 34);
             this.parishionerDataGridView.Name = "parishionerDataGridView";
-            this.parishionerDataGridView.Size = new System.Drawing.Size(745, 220);
-            this.parishionerDataGridView.TabIndex = 1;
+            this.parishionerDataGridView.Size = new System.Drawing.Size(864, 220);
+            this.parishionerDataGridView.TabIndex = 8;
             // 
-            // birthDateDateTimePicker
+            // dataGridViewTextBoxColumn8
             // 
-            this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.parishionerBindingSource, "BirthDate", true));
-            this.birthDateDateTimePicker.Location = new System.Drawing.Point(75, 260);
-            this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
-            this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.birthDateDateTimePicker.TabIndex = 4;
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // firstNameLabel
+            // dataGridViewTextBoxColumn9
             // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(9, 289);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(60, 13);
-            firstNameLabel.TabIndex = 4;
-            firstNameLabel.Text = "First Name:";
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn9.HeaderText = "FirstName";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // firstNameTextBox
+            // dataGridViewTextBoxColumn10
             // 
-            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.parishionerBindingSource, "FirstName", true));
-            this.firstNameTextBox.Location = new System.Drawing.Point(75, 286);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.firstNameTextBox.TabIndex = 5;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "MiddleName";
+            this.dataGridViewTextBoxColumn10.HeaderText = "MiddleName";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn11
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 41;
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn11.HeaderText = "LastName";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // dataGridViewTextBoxColumn2
+            // dataGridViewTextBoxColumn12
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "FirstName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 79;
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Adress";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Adress";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
-            // dataGridViewTextBoxColumn3
+            // dataGridViewTextBoxColumn13
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "MiddleName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "MiddleName(Edited)";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 127;
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "BirthDate";
+            this.dataGridViewTextBoxColumn13.HeaderText = "BirthDate";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
-            // dataGridViewTextBoxColumn4
+            // dataGridViewCheckBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn4.HeaderText = "LastName";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 80;
+            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Sex";
+            this.dataGridViewCheckBoxColumn2.HeaderText = "Sex";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
             // 
-            // dataGridViewTextBoxColumn5
+            // dataGridViewTextBoxColumn14
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Adress";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Adress";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 64;
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "TestColumn";
+            this.dataGridViewTextBoxColumn14.HeaderText = "TestColumn";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             // 
-            // dataGridViewTextBoxColumn6
+            // sortTextBox
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "BirthDate";
-            this.dataGridViewTextBoxColumn6.HeaderText = "BirthDate";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 76;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Sex";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Sex";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 31;
-            // 
-            // sortButton
-            // 
-            this.sortButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.sortButton.Image = ((System.Drawing.Image)(resources.GetObject("sortButton.Image")));
-            this.sortButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.sortButton.Name = "sortButton";
-            this.sortButton.Size = new System.Drawing.Size(23, 22);
-            this.sortButton.Text = "Отсортировать";
-            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            this.sortTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.sortTextBox.Name = "sortTextBox";
+            this.sortTextBox.Size = new System.Drawing.Size(100, 25);
+            this.sortTextBox.Leave += new System.EventHandler(this.sortTextBox_Leave);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(889, 450);
+            this.Controls.Add(this.parishionerDataGridView);
+            this.Controls.Add(this.parishionerBindingNavigator);
+            this.Controls.Add(this.indexTB);
+            this.Controls.Add(this.readOnlyCB);
             this.Controls.Add(firstNameLabel);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(birthDateLabel);
             this.Controls.Add(this.birthDateDateTimePicker);
-            this.Controls.Add(this.parishionerDataGridView);
-            this.Controls.Add(this.parishionerBindingNavigator);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -359,11 +373,23 @@ namespace CrurchParish
         }
 
         #endregion
-
-        private ChurchParishV2DataSet1 churchParishV2DataSet1;
+        private System.Windows.Forms.BindingSource parishionerBindingSource1;
+        private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
+        private System.Windows.Forms.TextBox firstNameTextBox;
+        private System.Windows.Forms.CheckBox readOnlyCB;
+        private System.Windows.Forms.TextBox indexTB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private CrurchParish.ChurchParishV2DataSet1 churchParishV2DataSet1;
         private System.Windows.Forms.BindingSource parishionerBindingSource;
-        private ChurchParishV2DataSet1TableAdapters.ParishionerTableAdapter parishionerTableAdapter;
-        private ChurchParishV2DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
+        private CrurchParish.ChurchParishV2DataSet1TableAdapters.ParishionerTableAdapter parishionerTableAdapter;
+        private CrurchParish.ChurchParishV2DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator parishionerBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -378,16 +404,15 @@ namespace CrurchParish
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton parishionerBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView parishionerDataGridView;
-        private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
-        private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.ToolStripButton sortButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.ToolStripTextBox sortTextBox;
     }
 }
 
