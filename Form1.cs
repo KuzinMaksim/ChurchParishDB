@@ -28,15 +28,12 @@ namespace ChurchParish
             churchParishV2DataSet1.Tables[0].Constraints.Add(uConstraint);
             churchParishV2DataSet1.Tables[0].Constraints.Remove(uConstraint);
 
+            parishionerDataGridView.AutoGenerateColumns = true;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "churchParishV2DataSet1.Parishioner". При необходимости она может быть перемещена или удалена.
-            this.parishionerTableAdapter.Fill(this.churchParishV2DataSet1.Parishioner);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "churchParishV2DataSet1.Parishioner". При необходимости она может быть перемещена или удалена.
-            this.parishionerTableAdapter.Fill(this.churchParishV2DataSet1.Parishioner);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "churchParishV2DataSet1.Parishioner". При необходимости она может быть перемещена или удалена.
             this.parishionerTableAdapter.Fill(this.churchParishV2DataSet1.Parishioner);
         }
 
@@ -64,6 +61,24 @@ namespace ChurchParish
             this.parishionerBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.churchParishV2DataSet1);
 
+        }
+
+        private void queryCB_SelectedValueChanged(object sender, EventArgs e)
+        {
+            switch (queryCB.SelectedItem)
+            {
+                case "Запрос возраста":
+                    this.parishionerTableAdapter.FillByAge(this.churchParishV2DataSet1.Parishioner);
+                    break;
+                case "Запрос мужчин":
+                    this.parishionerTableAdapter.FillBySexMale(this.churchParishV2DataSet1.Parishioner);
+                    break;
+                case "Вложенный запрос":
+                    this.parishionerTableAdapter.FillByMaxId(this.churchParishV2DataSet1.Parishioner);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

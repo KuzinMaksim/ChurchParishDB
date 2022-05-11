@@ -30,17 +30,15 @@ namespace ChurchParish
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Label birthDateLabel;
             System.Windows.Forms.Label firstNameLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.readOnlyCB = new System.Windows.Forms.CheckBox();
             this.indexTB = new System.Windows.Forms.TextBox();
-            this.churchParishV2DataSet1 = new CrurchParish.ChurchParishV2DataSet1();
-            this.parishionerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.parishionerTableAdapter = new CrurchParish.ChurchParishV2DataSet1TableAdapters.ParishionerTableAdapter();
-            this.tableAdapterManager = new CrurchParish.ChurchParishV2DataSet1TableAdapters.TableAdapterManager();
             this.parishionerBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.parishionerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.churchParishV2DataSet1 = new CrurchParish.ChurchParishV2DataSet1();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -64,14 +62,35 @@ namespace ChurchParish
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.queryCB = new System.Windows.Forms.ComboBox();
+            this.parishionerTableAdapter = new CrurchParish.ChurchParishV2DataSet1TableAdapters.ParishionerTableAdapter();
+            this.tableAdapterManager = new CrurchParish.ChurchParishV2DataSet1TableAdapters.TableAdapterManager();
             birthDateLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.churchParishV2DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parishionerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parishionerBindingNavigator)).BeginInit();
             this.parishionerBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.parishionerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.churchParishV2DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parishionerDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // birthDateLabel
+            // 
+            birthDateLabel.AutoSize = true;
+            birthDateLabel.Location = new System.Drawing.Point(9, 266);
+            birthDateLabel.Name = "birthDateLabel";
+            birthDateLabel.Size = new System.Drawing.Size(57, 13);
+            birthDateLabel.TabIndex = 8;
+            birthDateLabel.Text = "Birth Date:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new System.Drawing.Point(9, 293);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            firstNameLabel.TabIndex = 9;
+            firstNameLabel.Text = "First Name:";
             // 
             // readOnlyCB
             // 
@@ -91,26 +110,6 @@ namespace ChurchParish
             this.indexTB.Size = new System.Drawing.Size(100, 20);
             this.indexTB.TabIndex = 7;
             this.indexTB.Leave += new System.EventHandler(this.indexTB_Leave);
-            // 
-            // churchParishV2DataSet1
-            // 
-            this.churchParishV2DataSet1.DataSetName = "ChurchParishV2DataSet1";
-            this.churchParishV2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // parishionerBindingSource
-            // 
-            this.parishionerBindingSource.DataMember = "Parishioner";
-            this.parishionerBindingSource.DataSource = this.churchParishV2DataSet1;
-            // 
-            // parishionerTableAdapter
-            // 
-            this.parishionerTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ParishionerTableAdapter = this.parishionerTableAdapter;
-            this.tableAdapterManager.UpdateOrder = CrurchParish.ChurchParishV2DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // parishionerBindingNavigator
             // 
@@ -151,6 +150,16 @@ namespace ChurchParish
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
+            // 
+            // parishionerBindingSource
+            // 
+            this.parishionerBindingSource.DataMember = "Parishioner";
+            this.parishionerBindingSource.DataSource = this.churchParishV2DataSet1;
+            // 
+            // churchParishV2DataSet1
+            // 
+            this.churchParishV2DataSet1.DataSetName = "ChurchParishV2DataSet1";
+            this.churchParishV2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -314,15 +323,6 @@ namespace ChurchParish
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             // 
-            // birthDateLabel
-            // 
-            birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(9, 266);
-            birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(57, 13);
-            birthDateLabel.TabIndex = 8;
-            birthDateLabel.Text = "Birth Date:";
-            // 
             // birthDateDateTimePicker
             // 
             this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.parishionerBindingSource, "BirthDate", true));
@@ -330,15 +330,6 @@ namespace ChurchParish
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.birthDateDateTimePicker.TabIndex = 9;
-            // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(9, 293);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(60, 13);
-            firstNameLabel.TabIndex = 9;
-            firstNameLabel.Text = "First Name:";
             // 
             // firstNameTextBox
             // 
@@ -348,11 +339,36 @@ namespace ChurchParish
             this.firstNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.firstNameTextBox.TabIndex = 10;
             // 
+            // queryCB
+            // 
+            this.queryCB.FormattingEnabled = true;
+            this.queryCB.Items.AddRange(new object[] {
+            "Запрос возраста",
+            "Запрос мужчин",
+            "Вложенный запрос"});
+            this.queryCB.Location = new System.Drawing.Point(315, 262);
+            this.queryCB.Name = "queryCB";
+            this.queryCB.Size = new System.Drawing.Size(121, 21);
+            this.queryCB.TabIndex = 12;
+            this.queryCB.Text = "Запросы";
+            this.queryCB.SelectedValueChanged += new System.EventHandler(this.queryCB_SelectedValueChanged);
+            // 
+            // parishionerTableAdapter
+            // 
+            this.parishionerTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ParishionerTableAdapter = this.parishionerTableAdapter;
+            this.tableAdapterManager.UpdateOrder = CrurchParish.ChurchParishV2DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 450);
+            this.Controls.Add(this.queryCB);
             this.Controls.Add(firstNameLabel);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(birthDateLabel);
@@ -364,11 +380,11 @@ namespace ChurchParish
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.churchParishV2DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parishionerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parishionerBindingNavigator)).EndInit();
             this.parishionerBindingNavigator.ResumeLayout(false);
             this.parishionerBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.parishionerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.churchParishV2DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parishionerDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -407,6 +423,7 @@ namespace ChurchParish
         private System.Windows.Forms.ToolStripTextBox sortTextBox;
         private System.Windows.Forms.DateTimePicker birthDateDateTimePicker;
         private System.Windows.Forms.TextBox firstNameTextBox;
+        private System.Windows.Forms.ComboBox queryCB;
     }
 }
 

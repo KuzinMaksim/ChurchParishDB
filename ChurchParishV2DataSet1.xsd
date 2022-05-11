@@ -2,7 +2,7 @@
 <xs:schema id="ChurchParishV2DataSet1" targetNamespace="http://tempuri.org/ChurchParishV2DataSet1.xsd" xmlns:mstns="http://tempuri.org/ChurchParishV2DataSet1.xsd" xmlns="http://tempuri.org/ChurchParishV2DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ChurchParishV2ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ChurchParishV2ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ChurchParish.Properties.Settings.GlobalReference.Default.ChurchParishV2ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
@@ -89,17 +89,59 @@ SELECT Id, FirstName, MiddleName, LastName, Adress, BirthDate, Sex FROM Parishio
               <Mapping SourceColumn="BirthDate" DataSetColumn="BirthDate" />
               <Mapping SourceColumn="Sex" DataSetColumn="Sex" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ChurchParishV2ConnectionString (Settings)" DbObjectName="ChurchParishV2.dbo.Parishioner" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByAge" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByAge" GeneratorSourceName="FillByAge" GetMethodModifier="Public" GetMethodName="GetDataByAge" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByAge" UserSourceName="FillByAge">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, FirstName, MiddleName, LastName, Adress, BirthDate, Sex, DATEDIFF(yy, BirthDate, '11.05.2022') AS Age
+FROM            Parishioner</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ChurchParishV2ConnectionString (Settings)" DbObjectName="ChurchParishV2.dbo.Parishioner" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByMaxId" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByMaxId" GeneratorSourceName="FillByMaxId" GetMethodModifier="Public" GetMethodName="GetDataByMaxId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByMaxId" UserSourceName="FillByMaxId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, FirstName, MiddleName, LastName, Adress, BirthDate, Sex
+FROM            Parishioner
+WHERE        (Id =
+                             (SELECT        MAX(Id) AS Expr1
+                               FROM            Parishioner AS Parishioner_1))</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ChurchParishV2ConnectionString (Settings)" DbObjectName="ChurchParishV2.dbo.Parishioner" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBySexMale" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBySexMale" GeneratorSourceName="FillBySexMale" GetMethodModifier="Public" GetMethodName="GetDataBySexMale" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBySexMale" UserSourceName="FillBySexMale">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, FirstName, MiddleName, LastName, Adress, BirthDate, Sex
+FROM            Parishioner
+WHERE        (Sex = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
-        <Sources />
+        <Sources>
+          <DbSource ConnectionRef="ChurchParishV2ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarQuery" MethodsParameterType="CLR" Modifier="Public" Name="ScalarQuery" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ScalarQuery">
+            <SelectCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>SELECT        COUNT(*) AS Expr1
+FROM            Parishioner</CommandText>
+                <Parameters />
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+        </Sources>
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
   <xs:element name="ChurchParishV2DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ChurchParishV2DataSet1" msprop:Generator_UserDSName="ChurchParishV2DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Parishioner" msprop:Generator_TableClassName="ParishionerDataTable" msprop:Generator_TableVarName="tableParishioner" msprop:Generator_RowChangedName="ParishionerRowChanged" msprop:Generator_TablePropName="Parishioner" msprop:Generator_RowDeletingName="ParishionerRowDeleting" msprop:Generator_RowChangingName="ParishionerRowChanging" msprop:Generator_RowEvHandlerName="ParishionerRowChangeEventHandler" msprop:Generator_RowDeletedName="ParishionerRowDeleted" msprop:Generator_RowClassName="ParishionerRow" msprop:Generator_UserTableName="Parishioner" msprop:Generator_RowEvArgName="ParishionerRowChangeEvent">
+        <xs:element name="Parishioner" msprop:Generator_TableClassName="ParishionerDataTable" msprop:Generator_TableVarName="tableParishioner" msprop:Generator_TablePropName="Parishioner" msprop:Generator_RowDeletingName="ParishionerRowDeleting" msprop:Generator_RowChangingName="ParishionerRowChanging" msprop:Generator_RowEvHandlerName="ParishionerRowChangeEventHandler" msprop:Generator_RowDeletedName="ParishionerRowDeleted" msprop:Generator_UserTableName="Parishioner" msprop:Generator_RowChangedName="ParishionerRowChanged" msprop:Generator_RowEvArgName="ParishionerRowChangeEvent" msprop:Generator_RowClassName="ParishionerRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
